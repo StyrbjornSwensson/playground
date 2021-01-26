@@ -1,10 +1,10 @@
-FROM golang:1.13.7
+FROM golang:1.14
 
-ENV GO111MODULE=on
+WORKDIR /app
 
-WORKDIR /playground
-
-go.mod go.sum ./
+COPY go.mod ./
+COPY go.sum ./
+COPY src ./
 
 RUN go mod download
 
@@ -14,4 +14,4 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
 
 EXPOSE 8000
 
-CMD ["./main"]
+CMD go run main.go
