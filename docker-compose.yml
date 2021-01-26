@@ -1,0 +1,16 @@
+services:
+  frontend-playground:
+    build:
+      context: frontend-playground
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - "/app/node_modules"
+
+  backend-playground:
+    build:
+      context: backend-playground
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
